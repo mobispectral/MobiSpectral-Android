@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MobiSpectral</string>
+    <string name="formatted_illumination_string">%s Illumination</string>
+
+    <string name="application_picker_string">Choose Application</string>
+    <string name="organic_identification_string">Organic Identification</string>
+    <string name="apple_string">Organic Apple Identification</string>
+    <string name="olive_oil_string">Olive Oil Adulteration</string>
+    <string name="kiwi_string">Organic Kiwi Identification</string>
+    <string name="choose_mode_string">Choose Mode</string>
+    <string name="advanced_option_string">Detailed (Signature Analysis)</string>
+    <string name="simple_option_string">Simple (Organic Identification)</string>
+    <string name="offline_mode_string">Offline Mode</string>
+    <string name="launch_application_button">Start</string>
+    <string name="lab_string"></string>
+    <string name="school_string"></string>
+    <string name="get_hypercube_string">Get Hypercube</string>
+    <string name="analysis_button_text">Analysis</string>
+    <string name="classify_text">Click on the image to classify</string>
+    <string name="normalizing_image_string">Normalizing Image…</string>
+    <string name="reconstructing_hypercube_string">Reconstructing Hypercube…</string>
+    <string name="reconstruction_time_string">Reconstruction Time: %.2f s</string>
+    <string name="classification_time_string">Classification Time: %d ms</string>
+    <string name="simple_mode_signature_string">"Cropped Box - Center: (x: %1d, y: %2d)"</string>
+    <string name="classification_probabilities_string">Prob: %s</string>
+
+    <string name="capture_description">Capture Image</string>
+    <string name="tab_layout_description">Tab layout</string>
+    <string name="reload_capture_fragment_string">Re-capture the images</string>
+    <string name="information_button_string">Show information regarding the fragment</string>
+
+    <string name="no_nir_warning">No NIR Camera found.</string>
+    <string name="coming_soon_information_string">This application is Coming Soon!</string>
+    <string name="application_selector_information_string">We have three different applications that we have worked on: Organic classification (Apples, Kiwi, Blueberries), Olive Oil Adulteration, Kiwi Organic Classification. Scroll the wheel and select any of the applications.\nChoose which mode you\'d like to test the application on: Simple mode is for the layman to test (it is also faster to run, patched image), Advanced mode gives users the ability to select their own pixels to be used for Classification (can use the whole image).\nOffline Mode lets the user use pre-existing images to be used in our models, It will also enable the user to test our model on android phones which do not have a NIR camera (by using our own provided images). So pressing it will allow the user to run the app and on the next page will require the user to input two images (RGB and NIR).</string>
+    <string name="capture_information_string">Clicking the camera capture button captures both RGB and NIR image, back to back, to make it easy to align the two images.\nThe camera will not capture photo if the lighting conditions are not adequate.</string>
+    <string name="image_viewer_information_string">Swipe through the two RGB and NIR images. <b>Tap</b> on any part of the image to get a 128 * 128 bounding box which will be used in the Reconstruction phase.\nIn the simple mode, the application places the box in the middle (the image has to be 128 * 128). Whereas, for Advanced mode, you\'ll have to <b>tap</b> to use a patched image, not tapping anywhere will use the whole image for Spectral Reconstruction.</string>
+    <string name="reconstruction_analysis_information_string">Swipe through the reconstructed Hypercube bands.\nTap on the \"Analysis\" button to show the signature at a particular pixel.\nWhile on the \"Analysis\" page <b>Long Tap</b> on the GraphView to go back to the original page.\n<b>Tap</b> anywhere on any pixel to get its signature to be run through the classifier.\n<b>Tap and Hold</b> to show a new signature and delete all other persistent signature analysis.</string>
+    <string name="reconstruction_analysis_information_simple_string">Swipe through the reconstructed Hypercube bands.\nIn the simple mode, the application just checks the signature of the middle pixel.</string>
+
+    <string name="reconstruction_model_identification">mobile_mst_apple_kiwi_blueberry.pt</string>
+    <string name="reconstruction_model_oil">mobile_mst_oil.pt</string>
+    <string name="reconstruction_model_kiwi">mobile_mst_kiwi_dayl.pt</string>
+</resources>
