@@ -14,7 +14,7 @@ This application is written in Kotlin for Android phones. It works in two modes:
 \* For OnePlus 8 Pro, the camera with NIR information was removed using software due to [privacy concerns](https://www.theverge.com/2020/5/15/21259723/oneplus-8-pro-x-ray-vision-infrared-filter-see-through-plastic). It can be accessed in OxygenOS 11 using [Factory Mode](https://www.xda-developers.com/oneplus-8-pro-color-filter-camera-still-accessible-adb-command/ "How to access Color Filter Camera on OnePlus 8 Pro using adb") or by rooting the phone in OxygenOS 12.
 
 ## Install the App
-The APK for the application can be downloaded from here: [MobiSpectral APK](https://drive.google.com/file/d/18bQZj7JiFfU4paXye6SbOPJlbtXJHpEB/view?usp=sharing "MobiSpectral Android Application"). There are Information buttons ⓘ on each page (Fragment), which tells the user what to do.
+The APK for the application can be downloaded from here: [MobiSpectral APK](https://drive.google.com/file/d/1YjatiJ-GrJiGm5pF_XPlY1D7tFRrw1MK/view?usp=drive_link "MobiSpectral Android Application"). There are Information buttons ⓘ on each page (Fragment), which tells the user what to do.
 
 Steps for installing the application on your phone are as follows:
 
