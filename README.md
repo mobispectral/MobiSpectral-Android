@@ -47,7 +47,7 @@ dataset_[fruit]
 │
 └── mobile_data
 	│
-	└── nonorganic
+	└── non-organic
 	│	[num]_NIR.jpg
 	|	[num]_RGB.jpg
 	|	...
@@ -63,7 +63,7 @@ Steps to run the application in the offline mode:
 1. Unzip the dataset that you downloaded before
 2. Run the application
 3. Check the offline mode to be used
-	- `mobile_data` is the folder where you can select images, either from the organic or nonorganic sub-folders
+	- `mobile_data` is the folder where you can select images, either from the organic or non-organic sub-folders
 4. Select two corresponding images (RGB and NIR) from the pop-up by tapping
 5. (Optional) Tap to choose the region that will be used in the analysis (bounding box)
 6. Reconstruct the hypercube
@@ -71,12 +71,12 @@ Steps to run the application in the offline mode:
 
 The application screenshots below are captured using a smartphone without an NIR camera:
 
-| | | |
-:-------------------------:|:-------------------------:|:-------------------------:
-| <img src="images/MainPage(NoNIR).jpg" alt="MainPage(NoNIR)" width="200" /> | <img src="images/MainPageOffline.jpg" alt="MainPage" width="200" /> | <img src="images/CameraOffline.jpg" alt="Camera" width="200" /> |
-| Main Page if No NIR Camera is found | Selecting Offline Mode | Gallery Opening Intent |
-| <img src="images/ImageLoader.jpg" alt="ImageLoader" width="200" /> | <img src="images/Reconstruction(Detailed).jpg" alt="Reconstruction" width="200" /> | <img src="images/SignatureAnalysis(Detailed).jpg" alt="Classification" width="200" /> |
-| Selecting Images | Reconstruction | Classification Result |
+|                                                                            |                                                                                    |                                                                                       |
+|:--------------------------------------------------------------------------:|:----------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------:|
+| <img src="images/MainPage(NoNIR).jpg" alt="MainPage(NoNIR)" width="200" /> |        <img src="images/MainPageOffline.jpg" alt="MainPage" width="200" />         |            <img src="images/CameraOffline.jpg" alt="Camera" width="200" />            |
+|                    Main Page if No NIR Camera is found                     |                               Selecting Offline Mode                               |                                Gallery Opening Intent                                 |
+|     <img src="images/ImageLoader.jpg" alt="ImageLoader" width="200" />     | <img src="images/Reconstruction(Detailed).jpg" alt="Reconstruction" width="200" /> | <img src="images/SignatureAnalysis(Detailed).jpg" alt="Classification" width="200" /> |
+|                              Selecting Images                              |                                   Reconstruction                                   |                                 Classification Result                                 |
 
 ## Test the Application in Online Mode
 This mode requires a phone that allows accessing the NIR camera. Most phones with NIR cameras have them on the front because their primary use has so far been face identification. To assist the user in capturing fruit images using front-facing cameras, we added a countdown timer (3 sec) that makes the app issues a beeping sound after it captures the images. The Online mode also makes sure that the scene is well lit before the user can capture any picture.
@@ -84,24 +84,24 @@ This mode requires a phone that allows accessing the NIR camera. Most phones wit
 Steps to run the application in the online mode:
 1. Run the application (ensure the offline mode is checked off)
 2. Press the capture button, and turn the phone towards the fruit. It will beep after capturing the images
-4. (Optional) Tap to choose the region that will be used in the analysis (bounding box)
-6. Reconstruct the hypercube
-7. The application shows the predicted classification label for the fruit
+3. (Optional) Tap to choose the region that will be used in the analysis (bounding box)
+4. Reconstruct the hypercube
+5. The application shows the predicted classification label for the fruit
 
 Here are the screenshots from the android application (captured using Google Pixel 4XL):
 
-| | | |
-:-------------------------:|:-------------------------:|:-------------------------:
+|                                                                    |                                                                |                                                                          |
+|:------------------------------------------------------------------:|:--------------------------------------------------------------:|:------------------------------------------------------------------------:|
 | <img src="images/MainPageOnline.jpg" alt="MainPage" width="200" /> | <img src="images/CameraOnline.png" alt="Camera" width="200" /> | <img src="images/Classification.jpg" alt="Classification" width="200" /> |
-| Main Page | Camera Fragment | Classification Results |
+|                             Main Page                              |                        Camera Fragment                         |                          Classification Results                          |
 
 <!--## Simple and Detailed Analysis
-The difference between Simple and Detailed Analysis, as mentioned in [Section 1](#mobispectral-application-on-android), is that Detailed analysis allows (the user can also tap to get a smaller working area) the user to reconstruct the whole Hypercube. Reconstructing whole hypercube takes takes a lot more time. In the Detailed Analysis, you can tap on parts of the reconstructed hypercube bands, to get the signatures of that pixels and their predicted organic/nonorganic class. The images shown in the image sets above are for simple analysis where as the images below show their differences to detailed analysis:
-
-| | | |
-:-------------------------:|:-------------------------:|:-------------------------:
+The difference between Simple and Detailed Analysis, as mentioned in [Section 1](#mobispectral-application-on-android), is that Detailed analysis allows (the user can also tap to get a smaller working area) the user to reconstruct the whole Hypercube. Reconstructing whole hypercube takes takes a lot more time. In the Detailed Analysis, you can tap on parts of the reconstructed hypercube bands, to get the signatures of that pixels and their predicted organic/non-organic class. The images shown in the image sets above are for simple analysis where as the images below show their differences to detailed analysis:
+|                                                                                       |                                                                                   |                                                                                       |
+|:-------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------:|
 | <img src="images/ImageViewer(Detailed).jpg" alt="ImageViewer Detailed" width="200" /> | <img src="images/Reconstruction(Detailed).jpg" alt="Reconstructed" width="200" /> | <img src="images/SignatureAnalysis(Detailed).jpg" alt="Classification" width="200" /> |
-| Image Viewer in Detailed Analysis | Reconstructed Hypercube | Signature Analysis and Class Prediction |-->
+|                           Image Viewer in Detailed Analysis                           |                              Reconstructed Hypercube                              |                        Signature Analysis and Class Prediction                        |
+-->
 
 <!-- ## Pipeline
 1. Image Capturing: RGB followed by NIR.
