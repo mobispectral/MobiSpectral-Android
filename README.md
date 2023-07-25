@@ -78,6 +78,9 @@ The application screenshots below are captured using a smartphone without an NIR
 |     <img src="images/ImageLoader.jpg" alt="ImageLoader" width="200" />     | <img src="images/Reconstruction(Detailed).jpg" alt="Reconstruction" width="200" /> | <img src="images/SignatureAnalysis(Detailed).jpg" alt="Classification" width="200" /> |
 |                              Selecting Images                              |                                   Reconstruction                                   |                                 Classification Result                                 |
 
+### Demo for Offline Mode
+Here is a [Demo](https://drive.google.com/file/d/101vXVksUWyim7D_Bnn2vmlKWfbBqijzr/view?usp=drive_link "Offline Mode Demo Video 75 MBs") of offline mode in effect.
+
 ## Test the Application in Online Mode
 This mode requires a phone that allows accessing the NIR camera. Most phones with NIR cameras have them on the front because their primary use has so far been face identification. To assist the user in capturing fruit images using front-facing cameras, we added a countdown timer (3 sec) that makes the app issues a beeping sound after it captures the images. The Online mode also makes sure that the scene is well lit before the user can capture any picture.
 
@@ -90,10 +93,15 @@ Steps to run the application in the online mode:
 
 Here are the screenshots from the android application (captured using Google Pixel 4XL):
 
-|                                                                    |                                                                |                                                                          |
-|:------------------------------------------------------------------:|:--------------------------------------------------------------:|:------------------------------------------------------------------------:|
-| <img src="images/MainPageOnline.jpg" alt="MainPage" width="200" /> | <img src="images/CameraOnline.png" alt="Camera" width="200" /> | <img src="images/Classification.jpg" alt="Classification" width="200" /> |
-|                             Main Page                              |                        Camera Fragment                         |                          Classification Results                          |
+|                                                                                          |                                                                                                     |                                                                          |
+|:----------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
+|            <img src="images/MainPageOnline.png" alt="MainPage" width="200" />            |                   <img src="images/CameraOnline.png" alt="Camera" width="200" />                    | <img src="images/ImageViewerOnline.png" alt="ImageViewer" width="200" /> |
+|                                        Main Page                                         |                                           Camera Fragment                                           |                               Image Viewer                               |
+ | <img src="images/ReconstructionOnline(Detailed).png" alt="Reconstruction" width="200" /> |         <img src="images/Classification(Detailed).png" alt="Classification" width="200" />          |                                                                          |
+|                                      Reconstruction                                      |                            Classification Results and Spectral Analysis                             |                                                                          |
+
+### Demo for Online Mode
+Here is a [Demo](https://drive.google.com/file/d/1-ViHUEgqdd_PcOUKrsnfX4SxVYuLF1ih/view?usp=drive_link "Online Mode Demo Video 102.1 MBs") of online mode in effect.
 
 <!--## Simple and Detailed Analysis
 The difference between Simple and Detailed Analysis, as mentioned in [Section 1](#mobispectral-application-on-android), is that Detailed analysis allows (the user can also tap to get a smaller working area) the user to reconstruct the whole Hypercube. Reconstructing whole hypercube takes takes a lot more time. In the Detailed Analysis, you can tap on parts of the reconstructed hypercube bands, to get the signatures of that pixels and their predicted organic/non-organic class. The images shown in the image sets above are for simple analysis where as the images below show their differences to detailed analysis:
