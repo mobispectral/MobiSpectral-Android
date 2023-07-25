@@ -9,9 +9,9 @@ This application is written in Kotlin for Android phones. It works in two modes:
 
 ## Requirements
 - Offline mode: Any Android smartphone should work.
-- Online mode: An Android phone that allows access to the  NIR camera, such as Google Pixel 4 XL and OnePlus 8 Pro*.
+- Online mode: An Android phone that allows access to the  NIR camera, such as Google Pixel 4 XL.
 
-\* For OnePlus 8 Pro, the camera with NIR information was removed using software due to [privacy concerns](https://www.theverge.com/2020/5/15/21259723/oneplus-8-pro-x-ray-vision-infrared-filter-see-through-plastic). It can be accessed in OxygenOS 11 using [Factory Mode](https://www.xda-developers.com/oneplus-8-pro-color-filter-camera-still-accessible-adb-command/ "How to access Color Filter Camera on OnePlus 8 Pro using adb") or by rooting the phone in OxygenOS 12.
+<!-- \* For OnePlus 8 Pro, the camera with NIR information was removed using software due to [privacy concerns](https://www.theverge.com/2020/5/15/21259723/oneplus-8-pro-x-ray-vision-infrared-filter-see-through-plastic). It can be accessed in OxygenOS 11 using [Factory Mode](https://www.xda-developers.com/oneplus-8-pro-color-filter-camera-still-accessible-adb-command/ "How to access Color Filter Camera on OnePlus 8 Pro using adb") or by rooting the phone in OxygenOS 12. -->
 
 ## Install the App
 The APK for the application can be downloaded from here: [MobiSpectral APK](https://drive.google.com/file/d/1YjatiJ-GrJiGm5pF_XPlY1D7tFRrw1MK/view?usp=drive_link "MobiSpectral Android Application"). There are Information buttons ⓘ on each page (Fragment), which tells the user what to do.
@@ -41,7 +41,7 @@ Download one or more of the following Mobile Image datasets to test the applicat
 - [Tomatoes (46.6 MB)](https://drive.google.com/file/d/14XfBuJtO4k_CIRyumhy-Wk77tDJ_BopV/view?usp=drive_link "Tomatoes Test Dataset")
 - [Strawberries (60.1 MB)](https://drive.google.com/file/d/1-nJkoCrELbjaYDh7FrhMUqnB9xe8r1kj/view?usp=drive_link "Strawberries Test Dataset") -->
 
-If you have all of the datasets already downloaded (for the reconstruction and classification phase) these `mobile_data` directories are also present in them but if you wish to download just the `mobile_data` you can do so from these links. The datasets are in pairs of RGB and NIR images. Each dataset has the following directory structure, where `[fruit]` is apples, kiwis, ...:
+The datasets are in pairs of RGB and NIR images. Each dataset has the following directory structure, where `[fruit]` is apples, kiwis, ...:
 ```
 dataset_[fruit]
 │
