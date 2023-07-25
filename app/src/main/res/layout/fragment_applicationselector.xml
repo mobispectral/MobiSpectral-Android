@@ -77,12 +77,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <RadioButton
-            android:id="@+id/laymanOption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/sfu_primary"
-            android:text="@string/simple_option_string"/>
+<!--        <RadioButton-->
+<!--            android:id="@+id/laymanOption"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:buttonTint="@color/sfu_primary"-->
+<!--            android:text="@string/simple_option_string"/>-->
 
         <RadioButton
             android:id="@+id/advancedOption"
