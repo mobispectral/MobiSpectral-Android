@@ -75,8 +75,8 @@ The application screenshots below are captured using a smartphone without an NIR
 :-------------------------:|:-------------------------:|:-------------------------:
 | <img src="images/MainPage(NoNIR).jpg" alt="MainPage(NoNIR)" width="200" /> | <img src="images/MainPageOffline.jpg" alt="MainPage" width="200" /> | <img src="images/CameraOffline.jpg" alt="Camera" width="200" /> |
 | Main Page if No NIR Camera is found | Selecting Offline Mode | Gallery Opening Intent |
-| <img src="images/ImageLoader.jpg" alt="ImageLoader" width="200" /> | <img src="images/Reconstruction(Detailed).jpg" alt="ImageViewer" width="200" /> | <img src="images/SignatureAnalysis(Detailed).jpg" alt="Classification" width="200" /> |
-| Selecting Images | Image Viewer | Classification Result |
+| <img src="images/ImageLoader.jpg" alt="ImageLoader" width="200" /> | <img src="images/Reconstruction(Detailed).jpg" alt="Reconstruction" width="200" /> | <img src="images/SignatureAnalysis(Detailed).jpg" alt="Classification" width="200" /> |
+| Selecting Images | Reconstruction | Classification Result |
 
 ## Test the Application in Online Mode
 This mode requires a phone that allows accessing the NIR camera. Most phones with NIR cameras have them on the front because their primary use has so far been face identification. To assist the user in capturing fruit images using front-facing cameras, we added a countdown timer (3 sec) that makes the app issues a beeping sound after it captures the images. The Online mode also makes sure that the scene is well lit before the user can capture any picture.
