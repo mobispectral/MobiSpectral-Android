@@ -41,7 +41,7 @@ Download one or more of the following Mobile Image datasets to test the applicat
 - [Tomatoes (46.6 MB)](https://drive.google.com/file/d/14XfBuJtO4k_CIRyumhy-Wk77tDJ_BopV/view?usp=drive_link "Tomatoes Test Dataset")
 - [Strawberries (60.1 MB)](https://drive.google.com/file/d/1-nJkoCrELbjaYDh7FrhMUqnB9xe8r1kj/view?usp=drive_link "Strawberries Test Dataset") -->
 
-The datasets are in pairs of RGB and NIR images. Each dataset has the following directory structure, where `[fruit]` is apples, kiwis, ...:
+The datasets are in pairs of RGB and NIR images. Each dataset has the following directory structure, where `[fruit]` is e.g. apples.
 ```
 dataset_[fruit]
 │
