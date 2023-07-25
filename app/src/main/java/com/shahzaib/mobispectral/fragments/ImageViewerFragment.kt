@@ -126,10 +126,10 @@ class ImageViewerFragment: Fragment() {
                     val clickedY = (event.y / v.height) * bitmapsHeight
                     Log.i("Box Added", "X: $clickedX ($bitmapsWidth), Y: $clickedY ($bitmapsHeight)")
 
-                    leftCrop = 240 - Utils.boundingBoxWidth
-                    topCrop = 320 - Utils.boundingBoxHeight
-                    rightCrop = 240 + Utils.boundingBoxWidth
-                    bottomCrop = 320 + Utils.boundingBoxHeight
+                    leftCrop = clickedX - Utils.boundingBoxWidth
+                    topCrop = clickedY - Utils.boundingBoxHeight
+                    rightCrop = clickedX + Utils.boundingBoxWidth
+                    bottomCrop = clickedY + Utils.boundingBoxHeight
                     boundingBox(leftCrop, rightCrop, topCrop, bottomCrop, canvas, view, bitmapOverlay, position)
 
                     false
