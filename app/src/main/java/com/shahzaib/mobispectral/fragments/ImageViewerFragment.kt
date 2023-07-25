@@ -126,10 +126,10 @@ class ImageViewerFragment: Fragment() {
                     val clickedY = (event.y / v.height) * bitmapsHeight
                     Log.i("Box Added", "X: $clickedX ($bitmapsWidth), Y: $clickedY ($bitmapsHeight)")
 
-                    leftCrop = clickedX - Utils.boundingBoxWidth
-                    topCrop = clickedY - Utils.boundingBoxHeight
-                    rightCrop = clickedX + Utils.boundingBoxWidth
-                    bottomCrop = clickedY + Utils.boundingBoxHeight
+                    leftCrop = 240 - Utils.boundingBoxWidth
+                    topCrop = 320 - Utils.boundingBoxHeight
+                    rightCrop = 240 + Utils.boundingBoxWidth
+                    bottomCrop = 320 + Utils.boundingBoxHeight
                     boundingBox(leftCrop, rightCrop, topCrop, bottomCrop, canvas, view, bitmapOverlay, position)
 
                     false
@@ -231,7 +231,6 @@ class ImageViewerFragment: Fragment() {
                 if (leftCrop == 0F && topCrop == 0F && !advancedControlOption) {
                     leftCrop = rgbImageBitmap.width/2 - Utils.boundingBoxWidth
                     topCrop = rgbImageBitmap.height/2 - Utils.boundingBoxWidth
-
                 }
                 if (leftCrop != 0F && topCrop != 0F) {
                     rgbImageBitmap = cropImage(rgbImageBitmap, leftCrop, topCrop)
