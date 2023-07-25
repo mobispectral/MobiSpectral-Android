@@ -9,7 +9,7 @@ This application is written in Kotlin for Android phones. It works in two modes:
 
 ## Requirements
 - Offline mode: Any Android smartphone should work.
-- Online mode: Android phones that allow access to the  NIR camera, such as Google Pixel 4 XL and OnePlus 8 Pro*.
+- Online mode: An Android phone that allows access to the  NIR camera, such as Google Pixel 4 XL and OnePlus 8 Pro*.
 
 \* For OnePlus 8 Pro, the camera with NIR information was removed using software due to [privacy concerns](https://www.theverge.com/2020/5/15/21259723/oneplus-8-pro-x-ray-vision-infrared-filter-see-through-plastic). It can be accessed in OxygenOS 11 using [Factory Mode](https://www.xda-developers.com/oneplus-8-pro-color-filter-camera-still-accessible-adb-command/ "How to access Color Filter Camera on OnePlus 8 Pro using adb") or by rooting the phone in OxygenOS 12.
 
