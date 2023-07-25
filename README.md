@@ -71,12 +71,12 @@ Steps to run the application in the offline mode:
 
 The application screenshots below are captured using a smartphone without an NIR camera:
 
-|                                                                            |                                                                                    |                                                                                       |
-|:--------------------------------------------------------------------------:|:----------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------:|
-| <img src="images/MainPage(NoNIR).jpg" alt="MainPage(NoNIR)" width="200" /> |        <img src="images/MainPageOffline.jpg" alt="MainPage" width="200" />         |            <img src="images/CameraOffline.jpg" alt="Camera" width="200" />            |
-|                    Main Page if No NIR Camera is found                     |                               Selecting Offline Mode                               |                                Gallery Opening Intent                                 |
-|     <img src="images/ImageLoader.jpg" alt="ImageLoader" width="200" />     | <img src="images/Reconstruction(Detailed).jpg" alt="Reconstruction" width="200" /> | <img src="images/SignatureAnalysis(Detailed).jpg" alt="Classification" width="200" /> |
-|                              Selecting Images                              |                                   Reconstruction                                   |                                 Classification Result                                 |
+|                                                                            |                                                                                    |                                                                                  |
+|:--------------------------------------------------------------------------:|:----------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
+| <img src="images/MainPage(NoNIR).jpg" alt="MainPage(NoNIR)" width="200" /> |        <img src="images/MainPageOffline.jpg" alt="MainPage" width="200" />         |         <img src="images/CameraOffline.jpg" alt="Camera" width="200" />          |
+|                    Main Page if No NIR Camera is found                     |                               Selecting Offline Mode                               |                              Gallery Opening Intent                              |
+|     <img src="images/ImageLoader.jpg" alt="ImageLoader" width="200" />     | <img src="images/Reconstruction(Detailed).jpg" alt="Reconstruction" width="200" /> | <img src="images/SignatureAnalysis(Detailed).jpg" alt="Signature" width="200" /> |
+|                              Selecting Images                              |                                   Reconstruction                                   |                   Classification Result and Signature Analysis                   |
 
 ### Demo for Offline Mode
 Here is a [Demo](https://drive.google.com/file/d/101vXVksUWyim7D_Bnn2vmlKWfbBqijzr/view?usp=drive_link "Offline Mode Demo Video 75 MBs") of offline mode in effect.
@@ -93,12 +93,12 @@ Steps to run the application in the online mode:
 
 Here are the screenshots from the android application (captured using Google Pixel 4XL):
 
-|                                                                                          |                                                                                                     |                                                                          |
-|:----------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
-|            <img src="images/MainPageOnline.png" alt="MainPage" width="200" />            |                   <img src="images/CameraOnline.png" alt="Camera" width="200" />                    | <img src="images/ImageViewerOnline.png" alt="ImageViewer" width="200" /> |
-|                                        Main Page                                         |                                           Camera Fragment                                           |                               Image Viewer                               |
- | <img src="images/ReconstructionOnline(Detailed).png" alt="Reconstruction" width="200" /> |         <img src="images/Classification(Detailed).png" alt="Classification" width="200" />          |                                                                          |
-|                                      Reconstruction                                      |                            Classification Results and Spectral Analysis                             |                                                                          |
+|                                                                                          |                                                                                       |                                                                          |
+|:----------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------:|:------------------------------------------------------------------------:|
+|            <img src="images/MainPageOnline.png" alt="MainPage" width="200" />            |            <img src="images/CameraOnline.png" alt="Camera" width="200" />             | <img src="images/ImageViewerOnline.png" alt="ImageViewer" width="200" /> |
+|                                        Main Page                                         |                                    Camera Fragment                                    |                               Image Viewer                               |
+ | <img src="images/ReconstructionOnline(Detailed).png" alt="Reconstruction" width="200" /> | <img src="images/SignatureAnalysis(Detailed).png" alt="Classification" width="200" /> |                                                                          |
+|                                      Reconstruction                                      |                     Classification Results and Spectral Analysis                      |                                                                          |
 
 ### Demo for Online Mode
 Here is a [Demo](https://drive.google.com/file/d/1-ViHUEgqdd_PcOUKrsnfX4SxVYuLF1ih/view?usp=drive_link "Online Mode Demo Video 102.1 MBs") of online mode in effect.
