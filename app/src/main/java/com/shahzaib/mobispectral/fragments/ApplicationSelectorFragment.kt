@@ -74,28 +74,33 @@ class ApplicationSelectorFragment: Fragment() {
     override fun onStart() {
         super.onStart()
         val cameraIdNIR = Utils.getCameraIDs(requireContext(), MainActivity.MOBISPECTRAL_APPLICATION).second
-        disableButton(cameraIdNIR)
 
         fragmentApplicationselectorBinding.information.setOnClickListener {
             CameraFragment().generateAlertBox(requireContext(), "Information", getString(R.string.application_selector_information_string))
         }
 
-        fragmentApplicationselectorBinding.liveModeCheckMark.setOnCheckedChangeListener { _, buttonChecked ->
-            if (buttonChecked)
+        fragmentApplicationselectorBinding.radioGroup.setOnCheckedChangeListener { _, _ ->
+            val selectedRadio = fragmentApplicationselectorBinding.radioGroup.checkedRadioButtonId
+            val selectedOption = requireView().findViewById<RadioButton>(selectedRadio).text.toString()
+            if (selectedOption == getString(R.string.offline_mode_string))
                 enableButton()
             else
                 disableButton(cameraIdNIR)
+        }
+
+        if (cameraIdNIR == "No NIR Camera"){
+            fragmentApplicationselectorBinding.onlineMode.isEnabled = false
         }
 
         fragmentApplicationselectorBinding.runApplicationButton.setOnTouchListener { _, _ ->
             val selectedApplication = applicationArray[fragmentApplicationselectorBinding.applicationPicker.value]
             val selectedRadio = fragmentApplicationselectorBinding.radioGroup.checkedRadioButtonId
             val selectedOption = requireView().findViewById<RadioButton>(selectedRadio).text.toString()
-            val offlineMode = fragmentApplicationselectorBinding.liveModeCheckMark.isChecked
+            val offlineMode = selectedOption == getString(R.string.offline_mode_string)
             val sharedPreferences = requireActivity().getSharedPreferences("mobispectral_preferences", Context.MODE_PRIVATE)
             val editor = sharedPreferences?.edit()
             editor!!.putString("application", selectedApplication)
-            editor.putString("option", selectedOption)
+            editor.putString("option", getString(R.string.advanced_option_string))
             editor.putBoolean("offline_mode", offlineMode)
             Log.i("Radio Button", "$selectedApplication, $selectedOption")
             editor.apply()

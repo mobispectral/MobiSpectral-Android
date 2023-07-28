@@ -71,38 +71,27 @@
         android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checkedButton="@+id/advancedOption"
+        android:checkedButton="@+id/offlineMode"
         app:layout_constraintTop_toBottomOf="@+id/applicationPicker"
-        app:layout_constraintBottom_toTopOf="@+id/liveModeCheckMark"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-<!--        <RadioButton-->
-<!--            android:id="@+id/laymanOption"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:buttonTint="@color/sfu_primary"-->
-<!--            android:text="@string/simple_option_string"/>-->
-
         <RadioButton
-            android:id="@+id/advancedOption"
+            android:id="@+id/offlineMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/sfu_primary"
-            android:text="@string/advanced_option_string"/>
+            android:text="@string/offline_mode_string"/>
+
+        <RadioButton
+            android:id="@+id/onlineMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/sfu_primary"
+            android:text="@string/online_mode_string"/>
 
     </RadioGroup>
-
-    <CheckBox
-        android:id="@+id/liveModeCheckMark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/offline_mode_string"
-        android:buttonTint="@color/sfu_primary"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
