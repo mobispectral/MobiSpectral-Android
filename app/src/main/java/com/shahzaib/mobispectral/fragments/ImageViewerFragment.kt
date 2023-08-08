@@ -55,10 +55,10 @@ class ImageViewerFragment: Fragment() {
     private var bitmapsWidth = Utils.torchWidth
     private var bitmapsHeight = Utils.torchHeight
 
-    private var topCrop = 0F
-    private var bottomCrop = 0F
-    private var leftCrop = 0F
-    private var rightCrop = 0F
+    private var topCrop = -1F
+    private var bottomCrop = -1F
+    private var leftCrop = -1F
+    private var rightCrop = -1F
     private val loadingDialogFragment = LoadingDialogFragment()
 
     private var advancedControlOption: Boolean = false
@@ -97,6 +97,7 @@ class ImageViewerFragment: Fragment() {
         LoadingDialogFragment.text = getString(R.string.normalizing_image_string)
         loadingDialogFragment.isCancelable = false
         makeFolderInRoot(Utils.MobiSpectralPath, requireContext())
+        var firstTap = false
 
         _fragmentImageViewerBinding = FragmentImageviewerBinding.inflate(inflater, container, false)
         fragmentImageViewerBinding.viewpager.apply {
@@ -122,14 +123,35 @@ class ImageViewerFragment: Fragment() {
                 view.setOnTouchListener { v, event ->
                     canvas.drawBitmap(item, Matrix(), null)
 
-                    val clickedX = (event!!.x / v!!.width) * bitmapsWidth
-                    val clickedY = (event.y / v.height) * bitmapsHeight
+                    var clickedX = ((event!!.x / v!!.width) * bitmapsWidth).toInt()
+                    var clickedY = ((event.y / v.height) * bitmapsHeight).toInt()
+
+                    // Make sure the bounding box doesn't go outside the bounds of the image
+                    if (clickedX + Utils.boundingBoxWidth > item.width)
+                        clickedX = (item.width - Utils.boundingBoxWidth).toInt()
+                    if (clickedY + Utils.boundingBoxHeight > item.width)
+                        clickedY = (item.height - Utils.boundingBoxHeight).toInt()
+
+                    if (clickedX - Utils.boundingBoxWidth < 0)
+                        clickedX = (0 + Utils.boundingBoxWidth).toInt()
+                    if (clickedY - Utils.boundingBoxHeight < 0)
+                        clickedY = (0 + Utils.boundingBoxHeight).toInt()
+
                     Log.i("Box Added", "X: $clickedX ($bitmapsWidth), Y: $clickedY ($bitmapsHeight)")
 
-                    leftCrop = clickedX - Utils.boundingBoxWidth
-                    topCrop = clickedY - Utils.boundingBoxHeight
-                    rightCrop = clickedX + Utils.boundingBoxWidth
-                    bottomCrop = clickedY + Utils.boundingBoxHeight
+                    if (!firstTap) {
+                        leftCrop = item.width/2 - Utils.boundingBoxWidth
+                        topCrop = item.height/2 - Utils.boundingBoxHeight
+                        rightCrop = item.width/2 + Utils.boundingBoxWidth
+                        bottomCrop = item.height/2 + Utils.boundingBoxHeight
+                        firstTap = true
+                    }
+                    else {
+                        leftCrop = clickedX - Utils.boundingBoxWidth
+                        topCrop = clickedY - Utils.boundingBoxHeight
+                        rightCrop = clickedX + Utils.boundingBoxWidth
+                        bottomCrop = clickedY + Utils.boundingBoxHeight
+                    }
                     boundingBox(leftCrop, rightCrop, topCrop, bottomCrop, canvas, view, bitmapOverlay, position)
 
                     false
@@ -228,13 +250,18 @@ class ImageViewerFragment: Fragment() {
             saveProcessedImages(requireContext(), rgbImageBitmap, nirImageBitmap, rgbImageFileName, nirImageFileName, Utils.processedImageDirectory)
 
             fragmentImageViewerBinding.button.setOnClickListener {
-                if (leftCrop == 0F && topCrop == 0F && !advancedControlOption) {
+                // if crop isn't initialized for simple mode
+                if (leftCrop == -1F && topCrop == -1F && !advancedControlOption) {
                     leftCrop = rgbImageBitmap.width/2 - Utils.boundingBoxWidth
                     topCrop = rgbImageBitmap.height/2 - Utils.boundingBoxWidth
                 }
-                if (leftCrop != 0F && topCrop != 0F) {
+                Log.i("Cropped Image", "$leftCrop $topCrop")
+                // if the app is asked to crop the image
+                if (leftCrop != -1F && topCrop != -1F) {
                     rgbImageBitmap = cropImage(rgbImageBitmap, leftCrop, topCrop)
                     nirImageBitmap = cropImage(nirImageBitmap, leftCrop, topCrop)
+                    Log.i("Cropped Image", "${rgbImageBitmap.width} ${rgbImageBitmap.height}")
+                    Log.i("Cropped Image", "${nirImageBitmap.width} ${nirImageBitmap.height}")
                     saveProcessedImages(requireContext(), rgbImageBitmap, nirImageBitmap, rgbImageFileName, nirImageFileName, Utils.croppedImageDirectory)
                 }
 

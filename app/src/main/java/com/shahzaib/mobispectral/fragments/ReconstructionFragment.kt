@@ -297,6 +297,8 @@ class ReconstructionFragment: Fragment() {
             addItemToViewPager(fragmentReconstructionBinding.viewpager, MainActivity.tempRGBBitmap, 5)
             // fragmentReconstructionBinding.viewpager.currentItem = fragmentReconstructionBinding.viewpager.adapter!!.itemCount - 1
             loadingDialogFragment.dismissDialog()
+
+            inference()
         }
     }
 
@@ -320,7 +322,7 @@ class ReconstructionFragment: Fragment() {
         }
         val finalResults = ArrayList<Long> ()
 
-        if (bitmapsWidth == Utils.boundingBoxWidth.toInt()*2 && bitmapsHeight == Utils.boundingBoxHeight.toInt()*2 && !advancedControlOption && !alreadyMultiLabelInferred) {
+        if (bitmapsWidth == Utils.boundingBoxWidth.toInt()*2 && bitmapsHeight == Utils.boundingBoxHeight.toInt()*2 && !alreadyMultiLabelInferred) {
             val multiClassificationThread = Thread {
                 val zoneHeight = 8
                 val zoneWidth = 8
@@ -330,7 +332,7 @@ class ReconstructionFragment: Fragment() {
                     for (z2 in 0 until numberOfZones) {
                         val results = ArrayList<Long> ()
 //                        val signatureList = ArrayList<FloatArray> ()
-                        Log.i("Number of Zones", "Zones $numberOfZones ${z2*zoneWidth+8} ${z1*zoneHeight+8}")
+                        Log.i("Number of Zones", "Zones $numberOfZones ${z2*zoneWidth} ${z1*zoneHeight}")
 
 //                        signatureList.add(getSignature(predictedHS, z2*zoneWidth+8, z1*zoneWidth+8))
 
@@ -341,7 +343,7 @@ class ReconstructionFragment: Fragment() {
 //                            }
 //                        }
                         // println()
-                        results.add(classifyOneSignature(getSignature(predictedHS, z2*zoneWidth+7, z1*zoneWidth+7)))
+                        results.add(classifyOneSignature(getSignature(predictedHS, z2*zoneWidth, z1*zoneWidth)))
                         val frequencies = results.groupingBy { it }.eachCount()
                         finalResults.add(frequencies.maxBy { it.value }.key)
                         Log.i("Signatures OneClassify", "Final Results: $finalResults")
@@ -374,7 +376,7 @@ class ReconstructionFragment: Fragment() {
             val inputSignature = getSignature(predictedHS, clickedY.toInt(), clickedX.toInt())
             classifyOneSignature(inputSignature)
             MainActivity.predictedLabel = outputLabelString
-            fragmentReconstructionBinding.textViewClass.text = outputLabelString
+//            fragmentReconstructionBinding.textViewClass.text = outputLabelString
             fragmentReconstructionBinding.graphView.title = "$outputLabelString Signature at (x: ${clickedX.toInt()}, y: ${clickedY.toInt()})"
         }
         alreadyMultiLabelInferred = true
