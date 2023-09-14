@@ -32,7 +32,7 @@ import java.io.BufferedInputStream
 import java.io.File
 
 class ImageViewerFragment: Fragment() {
-    private val correctionMatrix = Matrix().apply { postRotate(90F); }
+    private val correctionMatrix = Matrix().apply { postRotate(-90F); }
 
     /** AndroidX navigation arguments */
     private val args: ImageViewerFragmentArgs by navArgs()
@@ -68,7 +68,7 @@ class ImageViewerFragment: Fragment() {
     }
 
     private fun boundingBox(left: Float, right: Float, top: Float, bottom: Float,
-                          canvas: Canvas, view: ImageView, bitmapOverlay: Bitmap, position: Int) {
+                            canvas: Canvas, view: ImageView, bitmapOverlay: Bitmap, position: Int) {
         val paint = Paint()
         paint.color = Color.argb(255, 0, 0, 0)
         paint.strokeWidth = 2.5F
@@ -206,24 +206,9 @@ class ImageViewerFragment: Fragment() {
             // Load the main JPEG image
             var rgbImageBitmap = decodeBitmap(bufferRGB, bufferRGB.size, true)
             var nirImageBitmap = decodeBitmap(bufferNIR, bufferNIR.size, false)
+            Log.i("Bitmap Size", "Decoded RGB: ${rgbImageBitmap.width} x ${rgbImageBitmap.height}, Decoded NIR: ${nirImageBitmap.width} x ${nirImageBitmap.height}")
 
-            if (rgbImageBitmap.width == nirImageBitmap.width && rgbImageBitmap.height == nirImageBitmap.height) {
-                if (!offlineMode){
-                    try {
-                        val alignedNIR = Utils.alignImages(rgbImageBitmap, nirImageBitmap)
-                        val alignedRGB = Utils.alignImages(nirImageBitmap, rgbImageBitmap)
-                        if (alignedNIR.width >= 200 && alignedNIR.height >= 200 && alignedRGB.width >= 200
-                            && alignedRGB.height >= 200) {
-                            nirImageBitmap = alignedNIR
-                            rgbImageBitmap = alignedRGB
-                        }
-                    }
-                    catch (e: org.opencv.core.CvException) {
-                        e.printStackTrace()
-                    }
-                }
-            }
-            else
+            if (rgbImageBitmap.width != nirImageBitmap.width && rgbImageBitmap.height != nirImageBitmap.height)
                 rgbImageBitmap = Utils.fixedAlignment(rgbImageBitmap)
 
             Log.i("Bitmap Size", "Decoded RGB: ${rgbImageBitmap.width} x ${rgbImageBitmap.height}, Decoded NIR: ${nirImageBitmap.width} x ${nirImageBitmap.height}")
@@ -331,7 +316,7 @@ class ImageViewerFragment: Fragment() {
 //            catch (exception: InterruptedException) { exception.printStackTrace() }
         }
         else {
-            bitmap = if (decodedBitmap.width > decodedBitmap.height)
+            bitmap = if (decodedBitmap.width < decodedBitmap.height)
                 Bitmap.createBitmap(decodedBitmap, 0, 0, decodedBitmap.width, decodedBitmap.height, correctionMatrix, false)
             else
                 Bitmap.createBitmap(decodedBitmap, 0, 0, decodedBitmap.width, decodedBitmap.height, null, false)

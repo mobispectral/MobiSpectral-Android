@@ -14,8 +14,8 @@
     <string name="offline_mode_string">Offline Mode</string>
     <string name="online_mode_string">Online Mode</string>
     <string name="launch_application_button">Start</string>
-    <string name="lab_string"></string>
-    <string name="school_string"></string>
+    <string name="lab_string">NMSL</string>
+    <string name="school_string">SFU</string>
     <string name="get_hypercube_string">Get Hypercube</string>
     <string name="analysis_button_text">Analysis</string>
     <string name="classify_text">Click on the image to classify</string>

@@ -23,6 +23,7 @@ import com.shahzaib.mobispectral.Utils.croppedImageDirectory
 import com.shahzaib.mobispectral.Utils.processedImageDirectory
 import com.shahzaib.mobispectral.Utils.rawImageDirectory
 import com.shahzaib.mobispectral.Utils.torchHeight
+import com.shahzaib.mobispectral.Utils.torchWidth
 import org.opencv.android.Utils
 import org.opencv.core.*
 import org.opencv.imgproc.Imgproc
@@ -40,8 +41,8 @@ import kotlin.coroutines.suspendCoroutine
 object Utils {
     const val previewHeight = 800
     const val previewWidth = 600
-    const val torchHeight = 640
-    const val torchWidth = 480
+    const val torchHeight = 480
+    const val torchWidth = 640
     private const val aligningFactorX = 37  //This is 37 if picture captured in portrait [35-41 if un-warped] 83 if landscape
     private const val aligningFactorY = 87  //This is 83 if picture captured in portrait [74 if un-warped] 100 if landscape
     const val MobiSpectralPath = "MobiSpectral/processedImages"
@@ -368,11 +369,11 @@ fun readImage(inputFile: String): Bitmap {
 }
 
 fun compressImage(bmp: Bitmap): Bitmap {
-    var bitmap = resizeBitmap(bmp, torchHeight)
+    var bitmap = resizeBitmap(bmp, torchWidth)
     Log.i("Utils.copyFile", "${bitmap.height} ${bitmap.width}")
-    if (bitmap.width > bitmap.height) {     // rotate so the image is always up right (portrait)
-        bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, Matrix().apply { postRotate(90F); }, false)
-    }
+//    if (bitmap.width > bitmap.height) {     // rotate so the image is always up right (portrait)
+//        bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, Matrix().apply { postRotate(90F); }, false)
+//    }
     return bitmap
 }
 
