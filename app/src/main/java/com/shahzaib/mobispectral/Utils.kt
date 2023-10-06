@@ -369,7 +369,7 @@ fun readImage(inputFile: String): Bitmap {
 }
 
 fun compressImage(bmp: Bitmap): Bitmap {
-    var bitmap = resizeBitmap(bmp, torchWidth)
+    val bitmap = if (bmp.height>640 && bmp.width>480) resizeBitmap(bmp, torchWidth) else bmp
     Log.i("Utils.copyFile", "${bitmap.height} ${bitmap.width}")
 //    if (bitmap.width > bitmap.height) {     // rotate so the image is always up right (portrait)
 //        bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, Matrix().apply { postRotate(90F); }, false)

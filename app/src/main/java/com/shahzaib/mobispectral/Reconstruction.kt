@@ -18,7 +18,7 @@ class Reconstruction(context: Context, modelPath: String) {
         model = Module.load(Utils.assetFilePath(context, modelPath))
     }
 
-    private fun getNormalizedTensor(bitmap: Bitmap): Tensor {
+    private fun getNormalizedTensor(bitmap: Bitmap, isRGB: Boolean): Tensor {
         val width = bitmap.width
         val height = bitmap.height
 
@@ -27,27 +27,15 @@ class Reconstruction(context: Context, modelPath: String) {
         bitmap.getPixels(pixels, 0, width, 0, 0, width, height)
 
         var min = 1000
-        var max = 0
+        var max = -1000
 
-        for (i in 0 until pixelCount) {
-            val color = pixels[i]
-            val red: Int = color shr 16 and 0xFF
-            val green: Int = color shr 8 and 0xFF
-            val blue: Int = color and 0xFF
-
-            if (red > max)
-                max = red
-            else if (green > max)
-                max = green
-            else if (blue > max)
-                max = blue
-
-            if (red < min)
-                min = red
-            else if (green < min)
-                min = green
-            else if (blue < min)
-                min = blue
+        if (isRGB) {
+            min = MainActivity.minMaxRGB.first
+            max = MainActivity.minMaxRGB.second
+        }
+        else {
+            min = MainActivity.minMaxNIR.first
+            max = MainActivity.minMaxNIR.second
         }
         val diff = (max - min).toFloat()
         val outBuffer: FloatBuffer = Tensor.allocateFloatBuffer(3 * width * height)
@@ -97,8 +85,8 @@ class Reconstruction(context: Context, modelPath: String) {
         bitmapsWidth = rgbBitmap.width
         bitmapsHeight = rgbBitmap.height
 
-        val rgbBitmapTensor = getNormalizedTensor(rgbBitmap)
-        val nirTensor: Tensor = getOneBand(getNormalizedTensor(nirBitmap), 0)
+        val rgbBitmapTensor = getNormalizedTensor(rgbBitmap, isRGB = true)
+        val nirTensor: Tensor = getOneBand(getNormalizedTensor(nirBitmap, isRGB = false), 0)
 
         val imageTensor: Tensor = concatenate(rgbBitmapTensor, nirTensor, 4)
         val inputs: IValue = IValue.from(imageTensor)

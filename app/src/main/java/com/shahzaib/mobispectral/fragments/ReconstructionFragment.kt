@@ -70,6 +70,7 @@ class ReconstructionFragment: Fragment() {
     private var bitmapsWidth = Utils.torchWidth
     private var bitmapsHeight = Utils.torchHeight
     private var alreadyMultiLabelInferred = false
+    private var applyOffset = false
 
     private fun imageViewFactory() = ImageView(requireContext()).apply {
         layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
@@ -198,6 +199,28 @@ class ReconstructionFragment: Fragment() {
                         view.setImageBitmap(bitmapOverlay)
                         fragmentReconstructionBinding.graphView.removeAllSeries()         // remove all previous series
 
+                        val leftCrop = item.width/2 - Utils.boundingBoxWidth
+                        val topCrop = item.height/2 - Utils.boundingBoxHeight
+                        val rightCrop = item.width/2 + Utils.boundingBoxWidth
+                        val bottomCrop = item.height/2 + Utils.boundingBoxHeight
+
+                        val paint = Paint()
+                        paint.color = Color.argb(255, 0, 0, 0)
+                        paint.strokeWidth = 2.5F
+                        paint.style = Paint.Style.STROKE
+
+                        Log.i("Crop Location", "L: $leftCrop, R: $rightCrop, T: $topCrop, B: $bottomCrop")
+
+                        canvas.drawRect(leftCrop-2.5F, topCrop-2.5F, rightCrop+2.5F, bottomCrop+2.5F, paint)
+                        view.setImageBitmap(bitmapOverlay)
+                        applyOffset = true
+                        try {
+                            inference()
+                            MainActivity.actualLabel = ""
+//                                addCSVLog(requireContext())
+                        } catch (e: NullPointerException) {
+                            e.printStackTrace()
+                        }
                         false
                     }
                 }
@@ -298,16 +321,21 @@ class ReconstructionFragment: Fragment() {
             // fragmentReconstructionBinding.viewpager.currentItem = fragmentReconstructionBinding.viewpager.adapter!!.itemCount - 1
             loadingDialogFragment.dismissDialog()
 
-            inference()
+//            inference()
+//            for (idx in 0 until 10) {
+//                Log.i("Predicted HS", "${predictedHS[idx]}")
+//
+//            }
+            val out1 = classifyOneSignature(getSignature(predictedHS, 208, 288))
         }
     }
 
     private fun signatureAverage(signatureList: ArrayList<FloatArray>): FloatArray {
         val averagedSignature = FloatArray(numberOfBands)
 //        for (signature in 0 until signatureList.size) {
-            for (band in 0 until numberOfBands) {
-                averagedSignature[band] = signatureList[7][band]
-            }
+        for (band in 0 until numberOfBands) {
+            averagedSignature[band] = signatureList[7][band]
+        }
 //        }
 
 //        for (band in 0 until numberOfBands)
@@ -322,17 +350,19 @@ class ReconstructionFragment: Fragment() {
         }
         val finalResults = ArrayList<Long> ()
 
-        if (bitmapsWidth == Utils.boundingBoxWidth.toInt()*2 && bitmapsHeight == Utils.boundingBoxHeight.toInt()*2 && !alreadyMultiLabelInferred) {
+        if (applyOffset && !alreadyMultiLabelInferred) {
             val multiClassificationThread = Thread {
                 val zoneHeight = 8
                 val zoneWidth = 8
-                val numberOfZones = bitmapsWidth/zoneWidth
+                val numberOfZones = (2*Utils.boundingBoxWidth.toInt())/zoneWidth
+                val offsetX = if (applyOffset) bitmapsWidth/2 - Utils.boundingBoxWidth.toInt() else 0
+                val offsetY = if (applyOffset) bitmapsHeight/2 - Utils.boundingBoxHeight.toInt() else 0
 
                 for (z1 in 0 until numberOfZones) {
                     for (z2 in 0 until numberOfZones) {
                         val results = ArrayList<Long> ()
 //                        val signatureList = ArrayList<FloatArray> ()
-                        Log.i("Number of Zones", "Zones $numberOfZones ${z2*zoneWidth} ${z1*zoneHeight}")
+                        Log.i("Number of Zones", "Zones $numberOfZones ${offsetX+z2*zoneWidth} ${offsetY+z1*zoneHeight}")
 
 //                        signatureList.add(getSignature(predictedHS, z2*zoneWidth+8, z1*zoneWidth+8))
 
@@ -343,7 +373,7 @@ class ReconstructionFragment: Fragment() {
 //                            }
 //                        }
                         // println()
-                        results.add(classifyOneSignature(getSignature(predictedHS, z2*zoneWidth, z1*zoneWidth)))
+                        results.add(classifyOneSignature(getSignature(predictedHS, offsetX+z2*zoneWidth, offsetY+z1*zoneWidth)))
                         val frequencies = results.groupingBy { it }.eachCount()
                         finalResults.add(frequencies.maxBy { it.value }.key)
                         Log.i("Signatures OneClassify", "Final Results: $finalResults")
@@ -353,6 +383,7 @@ class ReconstructionFragment: Fragment() {
             multiClassificationThread.start()
             try { multiClassificationThread.join() }
             catch (exception: InterruptedException) { exception.printStackTrace() }
+            alreadyMultiLabelInferred = true
 
             val finalFrequencies = finalResults.groupingBy { it }.eachCount()
             Log.i("Signatures OneClassify", "$finalResults $finalFrequencies")
@@ -379,7 +410,6 @@ class ReconstructionFragment: Fragment() {
 //            fragmentReconstructionBinding.textViewClass.text = outputLabelString
             fragmentReconstructionBinding.graphView.title = "$outputLabelString Signature at (x: ${clickedX.toInt()}, y: ${clickedY.toInt()})"
         }
-        alreadyMultiLabelInferred = true
 //        addCSVLog(requireContext())
     }
 

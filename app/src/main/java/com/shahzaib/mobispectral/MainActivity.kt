@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         lateinit var originalImageNIR: String
         lateinit var processedImageRGB: String
         lateinit var processedImageNIR: String
+        var minMaxRGB = Pair(1000, -1000)
+        var minMaxNIR = Pair(1000, -1000)
         var croppedImageRGB: String = ""
         var croppedImageNIR: String = ""
         var actualLabel: String = ""
