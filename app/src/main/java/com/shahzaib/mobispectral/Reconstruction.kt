@@ -58,6 +58,14 @@ class Reconstruction(context: Context, modelPath: String) {
         return Tensor.fromBlob(outBuffer, longArrayOf(1, 3, height.toLong(), width.toLong()))
     }
 
+    private fun printTensor(tensor: Tensor) {
+        val tensorFloatArray = tensor.dataAsFloatArray
+        val pixelCount = bitmapsHeight*bitmapsWidth
+        for (i in 0 until pixelCount) {
+            Log.i("Tensor Print", "I($i): ${tensorFloatArray[i]} ${tensorFloatArray[pixelCount+i]} ${tensorFloatArray[pixelCount*2 + i]}")
+        }
+    }
+
     @Suppress("SameParameterValue")
     private fun getOneBand(tensor: Tensor, offset: Int): Tensor {
         val tensorDoubleArray = tensor.dataAsFloatArray
@@ -89,6 +97,7 @@ class Reconstruction(context: Context, modelPath: String) {
         val nirTensor: Tensor = getOneBand(getNormalizedTensor(nirBitmap, isRGB = false), 0)
 
         val imageTensor: Tensor = concatenate(rgbBitmapTensor, nirTensor, 4)
+        printTensor(imageTensor)
         val inputs: IValue = IValue.from(imageTensor)
 
         val outputs: Tensor = model?.forward(inputs)?.toTensor()!!

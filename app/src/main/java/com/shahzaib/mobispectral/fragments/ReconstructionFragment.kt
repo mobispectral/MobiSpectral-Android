@@ -362,7 +362,7 @@ class ReconstructionFragment: Fragment() {
                     for (z2 in 0 until numberOfZones) {
                         val results = ArrayList<Long> ()
 //                        val signatureList = ArrayList<FloatArray> ()
-                        Log.i("Number of Zones", "Zones $numberOfZones ${offsetX+z2*zoneWidth} ${offsetY+z1*zoneHeight}")
+                        Log.i("Number of Zones", "Zones $numberOfZones X: ${offsetY+z1*zoneHeight} Y:  ${offsetX+z2*zoneWidth} ")
 
 //                        signatureList.add(getSignature(predictedHS, z2*zoneWidth+8, z1*zoneWidth+8))
 
@@ -373,7 +373,7 @@ class ReconstructionFragment: Fragment() {
 //                            }
 //                        }
                         // println()
-                        results.add(classifyOneSignature(getSignature(predictedHS, offsetX+z2*zoneWidth, offsetY+z1*zoneWidth)))
+                        results.add(classifyOneSignature(getSignature(predictedHS, offsetY+z1*zoneWidth, offsetX+z2*zoneWidth)))
                         val frequencies = results.groupingBy { it }.eachCount()
                         finalResults.add(frequencies.maxBy { it.value }.key)
                         Log.i("Signatures OneClassify", "Final Results: $finalResults")
@@ -434,7 +434,7 @@ class ReconstructionFragment: Fragment() {
 
     private fun getSignature(predictedHS: FloatArray, SignatureX: Int, SignatureY: Int): FloatArray {
         val signature = FloatArray(numberOfBands)
-        // Log.i("Touch Coordinates", "$SignatureX, $SignatureY")
+        Log.i("Touch Coordinates", "$SignatureX, $SignatureY")
         val leftX = bitmapsWidth - 1 - SignatureY       // -1 is the pixel itself
         val leftY = bitmapsHeight - 1 - SignatureX      // -1 is the pixel itself
 
