@@ -32,8 +32,8 @@ You can also [build the application from source code](#build-the-application-fro
 ## Test the Application in Offline Mode
 Download one or more of the following Mobile Image datasets to test the application:
 
-- [Apples (90.2 MB)](https://drive.google.com/file/d/1gV-Y31WzwILBqPNgJcsLAqMJTp7ua0JU/view?usp=drive_link "Apples Test Dataset")
-- [Kiwis (39.1 MB)](https://drive.google.com/file/d/1h2k2gD4A4KZEmmcGJFEAhxpVNv0QSHgF/view?usp=drive_link "Kiwis Test Dataset")
+- [Apples (90.2 MB)](https://drive.google.com/file/d/1P64_D6q9VCt20LQQiBf1dFlstu8xNuNK/view)
+- [Kiwis (39.1 MB)](https://drive.google.com/file/d/1P4QsOfZwNz6Fb_k5y4OZiSdctMrWMSVt/view)
 <!-- - [Blueberries (68.6 MB)](https://drive.google.com/file/d/1g_yICRC79qbsJH2hfTdv5RhSIgsOwkOc/view?usp=drive_link "Blueberries Test Dataset")
 - [Tomatoes (46.6 MB)](https://drive.google.com/file/d/14XfBuJtO4k_CIRyumhy-Wk77tDJ_BopV/view?usp=drive_link "Tomatoes Test Dataset")
 - [Strawberries (60.1 MB)](https://drive.google.com/file/d/1-nJkoCrELbjaYDh7FrhMUqnB9xe8r1kj/view?usp=drive_link "Strawberries Test Dataset") -->
