@@ -11,7 +11,7 @@ This application is written in Kotlin for Android phones. It works in two modes:
 For OnePlus 8 Pro, the camera with NIR information was removed using software due to [privacy concerns](https://www.theverge.com/2020/5/15/21259723/oneplus-8-pro-x-ray-vision-infrared-filter-see-through-plastic). It can be accessed in OxygenOS 11 using [Factory Mode](https://www.xda-developers.com/oneplus-8-pro-color-filter-camera-still-accessible-adb-command/ "How to access Color Filter Camera on OnePlus 8 Pro using adb") or by rooting the phone in OxygenOS 12.
 
 ## Install the App
-The APK for the application can be downloaded from here: [MobiSpectral APK](https://drive.google.com/file/d/1YjatiJ-GrJiGm5pF_XPlY1D7tFRrw1MK/view?usp=drive_link "MobiSpectral Android Application"). There are Information buttons ⓘ on each page (Fragment), which tells the user what to do.
+The APK for the application can be downloaded from here: [MobiSpectral APK](https://drive.google.com/file/d/1jYZD7jS99K_1JttCduFtIrcx7TrS7R-X/view?usp=sharing "MobiSpectral Android Application"). There are Information buttons ⓘ on each page (Fragment), which tells the user what to do.
 
 Steps for installing the application on your phone are as follows:
 
@@ -32,8 +32,8 @@ You can also [build the application from source code](#build-the-application-fro
 ## Test the Application in Offline Mode
 Download one or more of the following Mobile Image datasets to test the application:
 
-- [Apples (90.2 MB)](https://drive.google.com/file/d/1P64_D6q9VCt20LQQiBf1dFlstu8xNuNK/view)
-- [Kiwis (39.1 MB)](https://drive.google.com/file/d/1P4QsOfZwNz6Fb_k5y4OZiSdctMrWMSVt/view)
+- [Apples (90.2 MB)](https://drive.google.com/file/d/1P64_D6q9VCt20LQQiBf1dFlstu8xNuNK/view?usp=drive_link)
+- [Kiwis (39.1 MB)](https://drive.google.com/file/d/1P4QsOfZwNz6Fb_k5y4OZiSdctMrWMSVt/view?usp=drive_link)
 <!-- - [Blueberries (68.6 MB)](https://drive.google.com/file/d/1g_yICRC79qbsJH2hfTdv5RhSIgsOwkOc/view?usp=drive_link "Blueberries Test Dataset")
 - [Tomatoes (46.6 MB)](https://drive.google.com/file/d/14XfBuJtO4k_CIRyumhy-Wk77tDJ_BopV/view?usp=drive_link "Tomatoes Test Dataset")
 - [Strawberries (60.1 MB)](https://drive.google.com/file/d/1-nJkoCrELbjaYDh7FrhMUqnB9xe8r1kj/view?usp=drive_link "Strawberries Test Dataset") -->
@@ -76,7 +76,7 @@ The application screenshots below are captured using a smartphone without an NIR
 |                              Selecting Images                              |                                   Reconstruction                                   |                   Classification Result and Signature Analysis                   |
 
 ### Demo for Offline Mode
-Here is a [Demo](https://drive.google.com/file/d/101vXVksUWyim7D_Bnn2vmlKWfbBqijzr/view?usp=drive_link "Offline Mode Demo Video 75 MBs") of offline mode in effect.
+Here is a [Demo](https://drive.google.com/file/d/1Ln3mV2EjYsXqf930Gd0vKjm2Bm0NynBj/view?usp=drive_link "Offline Mode Demo Video 75 MBs") of offline mode in effect.
 
 ## Test the Application in Online Mode
 This mode requires a phone that allows accessing the NIR camera. Most phones with NIR cameras have them on the front because their primary use has so far been face identification. To assist the user in capturing fruit images using front-facing cameras, we added a countdown timer (3 sec) that makes the app issues a beeping sound after it captures the images. The Online mode also makes sure that the scene is well lit before the user can capture any picture.
@@ -98,7 +98,7 @@ Here are the screenshots from the android application (captured using Google Pix
 |                                      Reconstruction                                      |                     Classification Results and Spectral Analysis                      |                                                                          |
 
 ### Demo for Online Mode
-Here is a [Demo](https://drive.google.com/file/d/1-ViHUEgqdd_PcOUKrsnfX4SxVYuLF1ih/view?usp=drive_link "Online Mode Demo Video 102.1 MBs") of online mode in effect.
+Here is a [Demo](https://drive.google.com/file/d/1ByBDIEY1fMRED83hpzVbUR9ZBl3TpQOO/view?usp=drive_link "Online Mode Demo Video 102.1 MBs") of online mode in effect.
 
 <!--## Simple and Detailed Analysis
 The difference between Simple and Detailed Analysis, as mentioned in [Section 1](#mobispectral-application-on-android), is that Detailed analysis allows (the user can also tap to get a smaller working area) the user to reconstruct the whole Hypercube. Reconstructing whole hypercube takes takes a lot more time. In the Detailed Analysis, you can tap on parts of the reconstructed hypercube bands, to get the signatures of that pixels and their predicted organic/non-organic class. The images shown in the image sets above are for simple analysis where as the images below show their differences to detailed analysis:
